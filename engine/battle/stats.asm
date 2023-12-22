@@ -106,7 +106,9 @@ FarChangeStat:
 	jr z, .ability_check
 	cp KEEN_EYE
 	ld c, ACCURACY
-	jr nz, .check_item
+	jr z, .ability_check
+	cp MINDS_EYE
+	jr nz, .check_item ; c already loaded with ACCURACY
 .ability_check
 	ld a, [wChangedStat]
 	and $f
